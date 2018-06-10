@@ -51,3 +51,15 @@ where a.author_id between 1 and 5
 GROUP BY a.author_id
 order by a.name desc;
 
+/*uso de DISTINCT */
+
+
+/*Cuantos escritores hay de cada nacionalidad???*/
+SELECT DISTINCT nationality , COUNT(author_id) FROM authors GROUP BY nationality; 
+
+/*uso de IS NOT */
+
+SELECT DISTINCT nationality , COUNT(author_id) FROM authors
+where nationality IS NOT NULL AND nationality NOT in ('RUS','AUS')
+ GROUP BY nationality;
+
