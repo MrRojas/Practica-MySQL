@@ -1,4 +1,4 @@
-/*Cargar Schema */
+echo Cargar schema
 mysql -u root -p < SQL_PLATZI.sql
-/*Cargar datos*/
+echo Cargar Datos
 mysql -u root -p -D pruebaplatzi < ALL_DATA.sql
