@@ -63,3 +63,46 @@ SELECT DISTINCT nationality , COUNT(author_id) FROM authors
 where nationality IS NOT NULL AND nationality NOT in ('RUS','AUS')
  GROUP BY nationality;
 
+ /*Uso de CONCAT */
+
+ SELECT c.name, t.type, b.title,
+	 CONCAT(a.name , "(" , a.nationality ,")") as autor
+FROM transactions as t
+LEFT JOIN clients as C 
+	ON c.client_id = t.client_id
+LEFT JOIN books as b
+	on b.book_id = t.book_id
+LEFT JOIN authors as a
+	ON b.author_id = a.author_id;
+
+
+/* USO DE TO_DAYS*/
+
+
+ SELECT c.name, t.type, b.title,
+	 CONCAT(a.name , "(" , a.nationality ,")") as autor,
+	 ( TO_DAYS( NOW() ) - TO_DAYS( '2018-01-23' )  ) as Ago
+FROM transactions as t
+LEFT JOIN clients as C 
+	ON c.client_id = t.client_id
+LEFT JOIN books as b
+	on b.book_id = t.book_id
+LEFT JOIN authors as a
+	ON b.author_id = a.author_id;
+
+
+/*Entendiendo COUNT() y SUM() */
+
+SELECT COUNT(book_id) , SUM(1) from books; 
+
+
+/* Repaso */
+SELECT COUNT(book_id) , SUM(1) from books; 
+
+SELECT SUM(price * copies ) from books where sellable = 1; 
+
+SELECT SUM(price * copies) , nationality 
+from books as b
+JOIN authors as a on a.author_id = b.book_id
+WHERE price IS NOT NULL
+group by nationality;
