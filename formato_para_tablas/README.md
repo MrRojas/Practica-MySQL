@@ -1,1 +1,1 @@
-# Semtemcia para mostrar las tablas 
+# Semtencia para mostrar las tablas 
